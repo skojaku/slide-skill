@@ -57,7 +57,10 @@ def marp_render_cmd(deck_path, module_dir, out_pattern):
     to load -- every theme.css rule (colours, fonts, custom layout blocks like
     .band/.steps-list) then goes missing with no error.
     """
-    cmd = ["marp", deck_path, "--images", "png", "-o", out_pattern, "--allow-local-files"]
+    # --no-stdin: without it marp waits on stdin forever when not attached to a
+    # terminal, which looks exactly like a slow render (REVIEW_PLAYBOOK.md).
+    cmd = ["marp", deck_path, "--images", "png", "-o", out_pattern,
+           "--allow-local-files", "--no-stdin"]
     theme_css = os.path.join(module_dir, "theme.css")
     if os.path.isfile(theme_css):
         cmd += ["--theme-set", theme_css]
