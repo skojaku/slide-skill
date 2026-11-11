@@ -1,4 +1,4 @@
-# Slide Math Skill
+# Slide Skill
 
 A Claude Code skill for building and reviewing English [Marp](https://marp.app/) slide decks
 in the slide-math style: dense, annotated math slides that read as a handout.
@@ -10,7 +10,7 @@ in the slide-math style: dense, annotated math slides that read as a handout.
 
 Bundled: Marp theme (`theme/`), component set (`COMPONENTS.md`), figure kit (`figkit/`),
 checker (`tools/check.py`), fonts (`fonts/`), deck template (`template/`) and a gallery
-(`gallery/`). A deck needs nothing else.
+(`gallery/`).
 
 ## Sample
 
@@ -32,11 +32,13 @@ Copy `skills/slide-math/` to `~/.claude/skills/slide-math/`.
 
 See `skills/slide-math/SKILL.md` for the full guide.
 
+## Requirements
+
+`marp` (marp-cli 4), Chrome or Chromium, `python3` with Pillow, `xelatex` with `pgfplots`,
+`standalone` and `fontspec`, and `pdftocairo`. Rendering needs a network connection (KaTeX
+fonts load from a CDN). Details: `skills/slide-math/SKILL.md`.
+
 ## Fonts
 
 Source Sans 3, Source Serif 4 and Source Code Pro, each under the SIL Open Font License
 (license files in `skills/slide-math/fonts/`).
-
-## License
-
-MIT
