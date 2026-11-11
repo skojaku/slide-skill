@@ -1,24 +1,20 @@
-# Slide Skill
+# Slide Math Skill
 
-A Claude Code skill for building and reviewing [Marp](https://marp.app/) slide decks —
-lectures, technical talks, workshops. One skill, two modes:
+A Claude Code skill for building and reviewing English [Marp](https://marp.app/) slide decks
+in the slide-math style: dense, annotated math slides that read as a handout.
 
-- **Build** — write or fix a deck: `DECK_BUILD_GUIDE.md` (structure, pacing, deck
-  directory layout) and `FIGURE_GUIDE.md` (drawing figures that pass the gate).
-- **Review** — run the tiered review loop: `REVIEW_PLAYBOOK.md` (the review → fix →
-  re-verify process) and `SLIDE_RUBRIC.md` (what "good" means, criteria P1/F1/F4/N1–N4/S1–S5).
+- Black-bar titles with a one-sentence lead
+- Formulas in boxes with black tab labels, lavender highlights
+- Boxes split into 2-3 columns, code with its output
+- TikZ figures (dot plots, flow diagrams, number lines, data curves) with pins and leader lines
 
-Both modes share one bundled QA pipeline (`gatelib/`, a CLI called `deckgate`) and a
-default theme (`theme.css`), so a deck needs no external repo to build or review against.
-Automated checks (`deckgate check`) catch layout, overflow, KaTeX, and figure-consistency
-issues for free; LLM review is reserved for narrative and figure-choice judgment calls
-the pipeline can't measure.
+Bundled: Marp theme (`theme/`), component set (`COMPONENTS.md`), figure kit (`figkit/`),
+checker (`tools/check.py`), fonts (`fonts/`), deck template (`template/`) and a gallery
+(`gallery/`). A deck needs nothing else.
 
 ## Installation
 
-### Using `npx skills` (works across agents)
-
-[`npx skills`](https://github.com/vercel-labs/skills) is a package manager for AI agent skills.
+### Using `npx skills`
 
 ```bash
 npx skills add skojaku/slide-skill --all
@@ -28,13 +24,14 @@ npx skills add skojaku/slide-skill -a claude-code
 
 ### Manual install
 
-**Claude Code:** Copy `skills/slide/` to `~/.claude/skills/slide/`.
+Copy `skills/slide-math/` to `~/.claude/skills/slide-math/`.
 
-**Codex / Cursor / other agents:** Copy the contents of `skills/slide/SKILL.md` into your
-`AGENTS.md` or system prompt, and keep the bundled files (`gatelib/`, `template/`,
-`theme.css`, the guide docs) alongside it.
+See `skills/slide-math/SKILL.md` for the full guide.
 
-See `skills/slide/SKILL.md` for the full guide and mode-selection logic.
+## Fonts
+
+Source Sans 3, Source Serif 4 and Source Code Pro, each under the SIL Open Font License
+(license files in `skills/slide-math/fonts/`).
 
 ## License
 

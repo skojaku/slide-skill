@@ -1,0 +1,107 @@
+% slidemath.sty -- the figure side of the slide-math theme.
+% Loaded by figkit.py; compile with XeLaTeX. Units: \px = one slide pixel (0.75bp),
+% so a picture 600\px wide shows 600 px wide on the 1280 x 720 slide, and a 15\px
+% label matches the 15 px note text of the theme. Words: Source Sans 3. Math and
+% numbers: Computer Modern, as KaTeX sets them on the slide.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{slidemath}[2026/11/02 slide-math figure kit]
+
+\RequirePackage[no-math]{fontspec}
+\providecommand\slidemathfonts{./}
+\setmainfont{SourceSans3}[
+  Path=\slidemathfonts, Extension=.otf,
+  UprightFont=*-Regular, ItalicFont=*-It, BoldFont=*-Bold, BoldItalicFont=*-BoldIt,
+  FontFace={sb}{n}{*-Semibold}]
+\setsansfont{SourceSans3}[
+  Path=\slidemathfonts, Extension=.otf,
+  UprightFont=*-Regular, ItalicFont=*-It, BoldFont=*-Bold, BoldItalicFont=*-BoldIt]
+\setmonofont{SourceCodePro}[
+  Path=\slidemathfonts, Extension=.otf, UprightFont=*-Regular, BoldFont=*-Semibold]
+\RequirePackage{amsmath,amssymb,bm}
+\RequirePackage{tikz}
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.pathreplacing,patterns,fit,backgrounds}
+\usepgfplotslibrary{fillbetween}
+
+% ---- unit: one slide pixel ----
+\newdimen\px \px=0.75bp
+
+% ---- palette (same hex values as theme/math.css) ----
+\definecolor{ink}{HTML}{000000}
+\definecolor{paper}{HTML}{FAF9F6}
+\definecolor{fillgrey}{HTML}{F4F4F4}
+\definecolor{rule}{HTML}{C9C9C9}
+\definecolor{muted}{HTML}{969696}
+\definecolor{hl}{HTML}{F4E6FF}
+\definecolor{hlc}{HTML}{E5FDFF}
+\definecolor{hlink}{HTML}{9B6BC9}  % a darker lavender, for a highlighted LINE (a fill uses hl)
+\definecolor{key}{HTML}{B70000}
+\definecolor{link}{HTML}{2700D5}
+\definecolor{sbase}{HTML}{D55E00}
+\definecolor{snew}{HTML}{0072B2}
+\definecolor{sthree}{HTML}{E69F00}
+\definecolor{sfour}{HTML}{56B4E9}
+\definecolor{sfive}{HTML}{CC79A7}
+
+% ---- type sizes, in slide px (size / leading) ----
+\newcommand\fstick{\fontsize{13\px}{16\px}\selectfont}    % axis tick labels
+\newcommand\fssmall{\fontsize{15\px}{19\px}\selectfont}   % notes, legends, axis titles
+\newcommand\fslabel{\fontsize{17\px}{21\px}\selectfont}   % node labels
+\newcommand\fsbody{\fontsize{21\px}{27\px}\selectfont}    % text as large as the slide body
+\newcommand\fslarge{\fontsize{26\px}{31\px}\selectfont}   % a formula inside a node
+
+% ---- TikZ styles ----
+% Arrow-tip sizes are in bp (= px x 0.75): TikZ caches tips by name, and \px inside a tip breaks that.
+\tikzset{
+  every picture/.style={line width=1.5\px, line cap=butt, line join=miter},
+  % boxes: same border as .box on the slide
+  box/.style={draw=ink, line width=2\px, fill=white, inner xsep=12\px, inner ysep=8\px,
+              font=\fslabel, align=center},
+  greybox/.style={box, fill=fillgrey},
+  smallbox/.style={draw=ink, line width=1.5\px, fill=white, inner sep=4\px, font=\fssmall,
+              minimum width=26\px, minimum height=26\px},
+  tag/.style={draw=ink, line width=2\px, fill=white, inner xsep=6\px, inner ysep=3\px, font=\fssmall},
+  % arrows
+  arr/.style={-{Stealth[length=7.5bp, width=6bp]}, line width=1.2bp},
+  thick arr/.style={-{Stealth[length=12bp, width=15bp]}, line width=4.5bp},
+  % annotation
+  lead/.style={line width=1.4\px},
+  dot/.style={circle, fill=ink, inner sep=0pt, minimum size=9\px},
+  note/.style={font=\fssmall, align=left, inner sep=2\px},
+  zoom/.style={draw=ink, line width=2\px, dash pattern=on 5\px off 4\px},
+  brace/.style={decorate, decoration={brace, amplitude=6\px, raise=2\px}, line width=1.4\px},
+  % network diagrams: vertices are circles, edges stop at their border
+  vertex/.style={circle, draw=ink, line width=1.5\px, fill=white, minimum size=26\px, inner sep=0pt, font=\fssmall},
+  vertex hl/.style={vertex, fill=hl},
+  vertex hlc/.style={vertex, fill=hlc},
+  vertex grey/.style={vertex, fill=fillgrey},
+  edge/.style={line width=1.4\px},
+  dedge/.style={-{Stealth[length=7.5bp, width=6bp]}, line width=1.05bp},
+  % axes of the vector dot plot
+  vaxis/.style={line width=0.75bp, -{Stealth[length=5.25bp, width=3.75bp]}},
+  refline/.style={line width=0.9\px, draw=muted, dash pattern=on 4\px off 3\px},
+}
+
+% ---- pgfplots: data figures ----
+\pgfplotsset{
+  slidemath/.style={
+    width=520\px, height=300\px, scale only axis,
+    axis line style={line width=1\px, draw=ink},
+    every tick/.style={line width=0.8\px, draw=ink},
+    major tick length=4\px, minor tick length=2\px,
+    tick align=outside, tick pos=left,
+    tick label style={font=\fstick},
+    label style={font=\fssmall},
+    title style={font=\fssmall\bfseries},
+    legend style={draw=none, fill=none, font=\fssmall, cells={anchor=west},
+                  row sep=-2\px, inner sep=2\px},
+    legend cell align=left,
+    every axis plot/.append style={line width=1.4\px, line join=round},
+    clip mode=individual,
+  },
+  base/.style={color=sbase},   % series 1: the standard method
+  new/.style={color=snew},     % series 2: the proposal
+  third/.style={color=sthree},
+}
+\endinput
