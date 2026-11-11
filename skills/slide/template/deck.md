@@ -5,7 +5,7 @@ paginate: true
 footer: "Author Name, 2026"
 ---
 
-<!-- A slide-math deck. Before writing slides, write the wireframe (SKILL.md step 1): for every
+<!-- A slide deck. Before writing slides, write the wireframe (SKILL.md step 1): for every
      slide its title (a topic) and its lead (the claim, one sentence). Copy further slides from
      ../gallery/gallery.md (path relative to the skill). Render: tools/render.sh deck.md png -->
 

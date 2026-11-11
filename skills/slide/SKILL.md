@@ -1,14 +1,12 @@
 ---
-name: slide-math
-description: Build or review an English Marp slide deck in the slide-math style - dense, annotated math slides that read as a handout - black-bar titles with a one-sentence lead, formulas in boxes with black tab labels, lavender highlights, boxes split into 2-3 columns, code with its output, and TikZ figures (dot plots of vectors, flow diagrams, number lines, data curves) with pins and leader lines. Use when the user asks for slide-math, for math or handout-style slides like the softmax handout, or for a deck "in this style". Not for the course house style (that is the slide skill).
+name: slide
+description: Build or review an English Marp slide deck in this style - dense, annotated math slides that read as a handout - black-bar titles with a one-sentence lead, formulas in boxes with black tab labels, lavender highlights, boxes split into 2-3 columns, code with its output, and TikZ figures (dot plots of vectors, flow diagrams, number lines, data curves) with pins and leader lines. Use when the user asks for math or handout-style slides, or for a deck "in this style".
 ---
 
-# slide-math
+# slide
 
 A Marp theme, a component set, a figure kit and a checker for dense math slides in English.
-Everything is in this directory (`~/.claude/skills/slide-math/`); a deck needs nothing else.
-The `slide` skill (course house style) is separate: do not edit it from here, and do not mix the
-two themes in one deck.
+Everything is in this directory (`~/.claude/skills/slide/`).
 
 | file | read it for |
 |---|---|
@@ -24,18 +22,18 @@ two themes in one deck.
    (title / agenda / divider / a pattern from `STYLE.md` section 8), title (a topic noun phrase),
    lead (the claim in one literal sentence), the evidence it shows (formula, code, figure) and
    what is marked. Check the wording rule (`STYLE.md` section 5, N9) here, before any markup.
-2. **Scaffold.** `cp -R ~/.claude/skills/slide-math/template/. <deck_dir>/` and rename `deck.md`.
+2. **Scaffold.** `cp -R ~/.claude/skills/slide/template/. <deck_dir>/` and rename `deck.md`.
 3. **Figures.** Write `figures/make_figures.py` with the kit (`FIGURES.md`); run it from the deck
    directory. Author each figure at the width of the container it goes in (`FIGURES.md` section 3).
 4. **Slides.** Copy the matching slide from `gallery/gallery.md`, change the words. Keep the three
    markup rules of `COMPONENTS.md` section 0 (blank lines inside divs, no math in raw HTML, no
    hand positioning except overlays).
 5. **Check** until it reports 0 errors:
-   `python3 ~/.claude/skills/slide-math/tools/check.py deck.md`
+   `python3 ~/.claude/skills/slide/tools/check.py deck.md`
    It measures the laid-out slides in Chrome: content past the bottom or right margin, titles over
    one line, formulas or code wider than their box, unrendered LaTeX, KaTeX errors, missing images;
    it warns on leads or bullets over two lines and slides over 130 words.
-6. **Look.** `~/.claude/skills/slide-math/tools/render.sh deck.md png` writes one PNG per slide in
+6. **Look.** `~/.claude/skills/slide/tools/render.sh deck.md png` writes one PNG per slide in
    `review/png/` and contact sheets `review/sheet-N.png`. Read the sheets and every changed slide,
    and go through the checklist in `STYLE.md` section 11. Compare with `reference/gallery-*.png`.
 7. **Overlays last.** When the layout is final, add leader lines and dashed boxes

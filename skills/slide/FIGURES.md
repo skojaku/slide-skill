@@ -1,4 +1,4 @@
-# slide-math: figures
+# slide: figures
 
 How the figures of this style are drawn. The kit is `figkit/`: Python functions that write TikZ,
 `slidemath.sty` (fonts, colours, styles), and `build()`, which compiles with XeLaTeX and writes an
@@ -36,7 +36,7 @@ SVG. `gallery/figures/make_figures.py` builds one figure of every type below; st
 ```python
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path.home() / ".claude/skills/slide-math/figkit"))
+sys.path.insert(0, str(Path.home() / ".claude/skills/slide/figkit"))
 from figkit import P, build, vecdots, node, arrow, pin, zoom, label, brace, lineplot, hrule_axis, graph, vertex, edge, raw
 
 build("logits", vecdots([0.5, -0.8, 2.6, 0.2, None, -0.6],

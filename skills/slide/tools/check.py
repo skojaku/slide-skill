@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Check a slide-math deck in a real browser and list what is wrong, slide by slide.
+"""Check a slide deck in a real browser and list what is wrong, slide by slide.
 
-    python3 ~/.claude/skills/slide-math/tools/check.py deck.md            # report, exit 1 on errors
-    python3 ~/.claude/skills/slide-math/tools/check.py deck.md --boxes    # also print the box of
+    python3 ~/.claude/skills/slide/tools/check.py deck.md            # report, exit 1 on errors
+    python3 ~/.claude/skills/slide/tools/check.py deck.md --boxes    # also print the box of
                                                                           # every element with an id
 
 Marp clips whatever runs past the slide, silently; this tool measures the laid-out page.

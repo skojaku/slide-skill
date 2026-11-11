@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Render a slide-math deck with the skill's Marp config.
+# Render a slide deck with the skill's Marp config.
 #   render.sh deck.md            -> deck.html (the shareable file)
 #   render.sh deck.md pdf        -> deck.pdf  (the handout)
 #   render.sh deck.md png        -> review/png/deck.NNN.png, one per slide, then a contact sheet

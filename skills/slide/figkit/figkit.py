@@ -1,11 +1,11 @@
-"""figkit -- figures for slide-math decks, written in Python, drawn by TikZ.
+"""figkit -- figures for slide decks, written in Python, drawn by TikZ.
 
 Every function returns a string of TikZ code; `build()` wraps the strings in a
 standalone XeLaTeX document (figkit/slidemath.sty), compiles it and writes an SVG
 that is exactly as large on the slide as the coordinates say: 1 unit = 1 slide px.
 TikZ's y axis points UP (the slide's points down).
 
-    import sys; sys.path.insert(0, str(Path.home() / ".claude/skills/slide-math/figkit"))
+    import sys; sys.path.insert(0, str(Path.home() / ".claude/skills/slide/figkit"))
     from figkit import *
     build("logits", vecdots([0.5, -0.8, 2.6, None, -0.6], labels=["1","2","3","\\cdots","K"],
                             highlight={2: "hl"}, yticks=[-1, 0, 1, 2]))
@@ -277,7 +277,7 @@ def lineplot(series: Sequence[dict], *, w: float = 520, h: float = 280, xlabel: 
              ylabel: str = "", ymode: str = "normal", xmin=None, xmax=None, ymin=None,
              ymax=None, legend: str | None = "north east", title: str = "",
              at=(0, 0), name: str = "plot", extra: str = "", after: str = "") -> str:
-    """A data figure with pgfplots in the slide-math style (thin black frame, ticks outside,
+    """A data figure with pgfplots in the slide style (thin black frame, ticks outside,
     legend without a frame). Each series: {"x": [...], "y": [...], "style": "base"|"new"|"third"
     or TikZ options, "label": "..."}. Axis coordinates are available inside `after` as
     (axis cs:x,y). Series 'base' = the standard method (vermillion), 'new' = the proposal (blue).

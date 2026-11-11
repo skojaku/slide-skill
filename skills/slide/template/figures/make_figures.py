@@ -1,13 +1,13 @@
 """Build every figure of this deck:  python3 figures/make_figures.py  (from the deck directory).
 
-See ~/.claude/skills/slide-math/FIGURES.md, and gallery/figures/make_figures.py in the skill for
+See ~/.claude/skills/slide/FIGURES.md, and gallery/figures/make_figures.py in the skill for
 one example of each figure type.
 """
 
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path.home() / ".claude/skills/slide-math/figkit"))
+sys.path.insert(0, str(Path.home() / ".claude/skills/slide/figkit"))
 from figkit import P, arrow, brace, build, hrule_axis, label, lineplot, node, pin, raw, vecdots, zoom  # noqa: E402,F401
 
 OUT = Path(__file__).resolve().parent

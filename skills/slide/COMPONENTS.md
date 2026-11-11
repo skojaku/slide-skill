@@ -1,4 +1,4 @@
-# slide-math: components
+# slide: components
 
 Every part of a slide and its markup. Copy from here or from `gallery/gallery.md` (one slide per
 pattern, each with a comment naming its layout). The rules behind them are in `STYLE.md`.
@@ -28,7 +28,7 @@ header: "![](figures/logo.svg)"     # optional logo, top right; omit if none
 ```
 
 Render with the skill's config (it registers the theme, enables HTML and the KaTeX macros):
-`~/.claude/skills/slide-math/tools/render.sh deck.md [html|pdf|png|all]`.
+`~/.claude/skills/slide/tools/render.sh deck.md [html|pdf|png|all]`.
 
 A content slide:
 
@@ -265,7 +265,7 @@ being explained; the line ends at the note or the formula it points to.
 
 - a block: `<div class="out" id="out">`, `<p class="small" id="n1">`
 - a part of a formula: `\htmlId{frac}{\hl{\frac{1}{1+e^{-m}}}}`
-- run `python3 ~/.claude/skills/slide-math/tools/check.py deck.md --boxes` and read
+- run `python3 ~/.claude/skills/slide/tools/check.py deck.md --boxes` and read
   `box #frac: x 847-983, y 197-233 (centre 915,215)`.
 - a point inside a figure: read it off the rendered PNG (`review/png/deck.NNN.png` is 1280 x 720,
   so pixel = slide coordinate), or put the annotation inside the figure itself (`FIGURES.md`),

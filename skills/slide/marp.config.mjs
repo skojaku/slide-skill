@@ -1,5 +1,5 @@
-// Marp CLI config for slide-math decks. Use it for every render:
-//   marp --config ~/.claude/skills/slide-math/marp.config.mjs --no-stdin deck.md -o deck.html
+// Marp CLI config for slide decks. Use it for every render:
+//   marp --config ~/.claude/skills/slide/marp.config.mjs --no-stdin deck.md -o deck.html
 // (tools/render.sh wraps this.) It registers the theme, turns on raw HTML (needed by every
 // component) and defines the KaTeX macros listed in COMPONENTS.md section 6.
 import { fileURLToPath } from 'node:url'

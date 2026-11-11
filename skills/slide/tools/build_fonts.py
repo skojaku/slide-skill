@@ -9,7 +9,7 @@ into each exported HTML, so a relative url() to a font file would not resolve;
 embedding keeps the HTML, PDF and PNG exports identical on any machine, offline.
 
 Run (only when a font file changes):
-    uv run ~/.claude/skills/slide-math/tools/build_fonts.py
+    uv run ~/.claude/skills/slide/tools/build_fonts.py
 Do not open math-fonts.css: it is one long base64 line per face.
 """
 

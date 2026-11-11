@@ -1,6 +1,6 @@
 """Build every figure of the gallery deck (one example of each figure type in FIGURES.md).
 
-    cd ~/.claude/skills/slide-math/gallery && python3 figures/make_figures.py
+    cd ~/.claude/skills/slide/gallery && python3 figures/make_figures.py
 
 Pure Python (no numpy); needs xelatex and pdftocairo on PATH.
 """

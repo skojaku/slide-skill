@@ -1,4 +1,4 @@
-# slide-math: the style
+# slide: the style
 
 The look of these decks, why it works, and the rules that keep it. `COMPONENTS.md` has the markup,
 `FIGURES.md` the figures. Numbers below are slide pixels on the 1280 x 720 slide.
