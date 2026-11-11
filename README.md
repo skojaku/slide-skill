@@ -12,6 +12,10 @@ Bundled: Marp theme (`theme/`), component set (`COMPONENTS.md`), figure kit (`fi
 checker (`tools/check.py`), fonts (`fonts/`), deck template (`template/`) and a gallery
 (`gallery/`). A deck needs nothing else.
 
+## Sample
+
+[Embedding lecture deck](https://skojaku.github.io/slide-skill/samples/m08-embedding/)
+
 ## Installation
 
 ### Using `npx skills`
